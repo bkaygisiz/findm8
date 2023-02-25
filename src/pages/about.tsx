@@ -6,9 +6,7 @@ import Image from "next/image";
 export default function About() {
     return (
         <>
-            <Head>
-                <Navigation />
-            </Head>
+            <Navigation />
             <main className="bg-slate-900">
                 <div className="flex justify-center pt-16 animate-fadin">
                     <h1 className="text-slate-300 text-6xl">Join us and start making up your dream team !</h1>
@@ -18,7 +16,7 @@ export default function About() {
                         type={"flex-row"}
                         src={"img.jpg"}
                     />
-                    <Article 
+                    <Article
                         type={"flex-row-reverse"}
                         src={"img3.jpg"}
                     />
