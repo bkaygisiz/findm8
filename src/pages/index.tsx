@@ -11,10 +11,8 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <Navigation />
-      </Head>
-      <main>
+      <Navigation />
+      <main className='bg-slate-900 h-screen'>
       </main>
     </>
   )

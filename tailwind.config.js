@@ -7,13 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero': "url('/public/img.jpg')",
+      },
       animation: {
         fadin: 'fadin 1.5s ease-in-out',
       },
       keyframes: {
         fadin: {
           '0%': { opacity: 0, transform: 'translateY(300px)' },
-          '100%': { opacity: 1 , transform: 'translateY(0px)'},
+          '80%': { opacity: 0.8 , transform: 'translateY(-50px)'},
+          '100%': { opacity: 1, transform: 'translateY(0px)' },
         },
       }
     },
