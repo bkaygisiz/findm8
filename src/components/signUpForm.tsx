@@ -83,7 +83,7 @@ export default function SignUpForm() {
 
     return (
         <>
-            <form className="flex flex-col lg:w-2/5 md:w-4/5 md:h-4/5 w-4/5 py-10 justify-center items-center animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-r from-slate-800 to-slate-900 lg:space-y-10 md:space-y-10 space-y-6">
+            <form className="flex overflow-scroll flex-col py-10 lg:w-2/5 md:w-4/5 h-4/5 w-4/5 justify-center items-center animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-r from-slate-800 to-slate-900 lg:space-y-8 md:space-y-10 space-y-6">
                 <h1 className="text-slate-100 md:text-5xl text-4xl font-bold break-words">Sign up</h1>
                 <div className='w-4/6 flex flex-col items-center'>
                     <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
@@ -122,7 +122,7 @@ export default function SignUpForm() {
                         placeholder='************'
                         className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none"
                     />
-                    <p className="text-red-500 break-all text-sm w-4/5 mt-1">{errorPassword}</p>
+                    <p className="text-red-500 break-words text-sm w-4/5 mt-1">{errorPassword}</p>
                     <p className="text-slate-500 text-xs w-4/5 mt-1">Password security : {message}</p>
                 </div>
                 <div className='w-4/6 flex flex-col items-center'>
