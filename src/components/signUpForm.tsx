@@ -86,8 +86,8 @@ export default function SignUpForm() {
             <form className="flex flex-col lg:w-2/5 md:w-4/5 md:h-4/5 w-4/5 py-10 justify-center items-center animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-r from-slate-800 to-slate-900 lg:space-y-10 md:space-y-10 space-y-6">
                 <h1 className="text-slate-100 md:text-5xl text-4xl font-bold break-words">Sign up</h1>
                 <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words'>
-                        <HiOutlineMail className='text-xl inline-block' /> Email
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                        <HiOutlineMail className='lg:text-xl md:text-xl text-md inline-block' /> Email
                     </label>
                     <input
                         type="text"
@@ -99,8 +99,8 @@ export default function SignUpForm() {
                     <p className="text-red-500 w-4/5 mt-1">{errorEmail}</p>
                 </div>
                 <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words'>
-                        <HiUserCircle className='inline-block text-xl' /> Username
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                        <HiUserCircle className='inline-block lg:text-xl md:text-xl text-md' /> Username
                     </label>
                     <input
                         type="text"
@@ -112,8 +112,8 @@ export default function SignUpForm() {
                     <p className="text-red-500 w-4/5 mt-1">{errorUsername}</p>
                 </div>
                 <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words'>
-                        <MdPassword className='inline-block text-xl' /> Password
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                        <MdPassword className='inline-block lg:text-xl md:text-xl text-md' /> Password
                     </label>
                     <input
                         type="password"
@@ -126,8 +126,8 @@ export default function SignUpForm() {
                     <p className="text-slate-500 text-xs w-4/5 mt-1">Password security : {message}</p>
                 </div>
                 <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words'>
-                        <MdPassword className='inline-block text-xl' /> Comfirm password
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                        <MdPassword className='inline-block lg:text-xl md:text-xl text-md' /> Comfirm password
                     </label>
                     <input
                         type="password"
@@ -143,7 +143,7 @@ export default function SignUpForm() {
                         onClick={signUp}
                         className="bg-slate-900 lg:w-1/5 md:w-28 w-3/5 break-words p-1 rounded-sm border-solid border border-slate-700 shadow-md hover:bg-slate-800 duration-300 active:bg-slate-900 active:ring-2 active:ring-green-700 focus:outline-none"
                     >
-                        <HiCheckCircle className='inline-block text-xl' /> Sign up
+                        <HiCheckCircle className='inline-block lg:text-xl md:text-xl text-md' /> Sign up
                     </button>
                 </div>
             </form>
