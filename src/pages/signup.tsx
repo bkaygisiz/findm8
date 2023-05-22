@@ -1,4 +1,5 @@
 import Navigation from '@/components/navigation';
+import { Html, Head, Main, NextScript } from 'next/document'
 import SignUpForm from '@/components/signUpForm';
 
 export default function SignUp() {

@@ -1,10 +1,10 @@
 import { HiOutlineMail, HiUserCircle, HiCheckCircle } from 'react-icons/hi';
 import { MdPassword } from 'react-icons/md';
 import { useState } from 'react';
-import { FormData } from '@/types/types';
+import { SignUpFormData } from '@/types/types';
 
 export default function SignUpForm() {
-    const [values, setValues] = useState<FormData>({
+    const [values, setValues] = useState<SignUpFormData>({
         email: '',
         username: '',
         password: '',
@@ -18,7 +18,6 @@ export default function SignUpForm() {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         checkValue(event);
-        console.log(event.target.className)
         setValues({
             ...values,
             [event.target.name]: event.target.value,
@@ -29,6 +28,7 @@ export default function SignUpForm() {
         alert('Sign up !')
     };
 
+    // Check if the value of the input is valid
     const checkValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const usernameRegex = /^[a-zA-Z0-9_-]{3,}$/;
@@ -83,10 +83,10 @@ export default function SignUpForm() {
 
     return (
         <>
-            <form className="flex overflow-scroll flex-col py-10 lg:w-2/5 md:w-4/5 h-4/5 w-4/5 justify-center items-center animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-r from-slate-800 to-slate-900 lg:space-y-8 md:space-y-10 space-y-6">
-                <h1 className="text-slate-100 md:text-5xl text-4xl font-bold break-words">Sign up</h1>
-                <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+            <form className="flex flex-col lg:overflow-hidden md:overflow-scroll overflow-scroll py-10 lg:w-2/5 md:w-4/5 md:h-3/5 lg:h-4/5 h-3/5 w-4/5 animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-r from-slate-800 to-slate-900 lg:space-y-8 md:space-y-10 space-y-6">
+                <h1 className="flex flex-col text-slate-100 md:text-5xl text-xl font-bold break-words m-auto">Sign up</h1>
+                <div className='w-4/6 flex flex-col m-auto'>
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm m-auto'>
                         <HiOutlineMail className='lg:text-xl md:text-xl text-md inline-block' /> Email
                     </label>
                     <input
@@ -94,12 +94,12 @@ export default function SignUpForm() {
                         name='email'
                         onChange={handleChange}
                         placeholder='Email'
-                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none"
+                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none m-auto"
                     />
-                    <p className="text-red-500 w-4/5 mt-1">{errorEmail}</p>
+                    <p className="text-red-500 w-4/5 m-auto">{errorEmail}</p>
                 </div>
-                <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                <div className='w-4/6 flex flex-col m-auto'>
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm m-auto'>
                         <HiUserCircle className='inline-block lg:text-xl md:text-xl text-md' /> Username
                     </label>
                     <input
@@ -107,12 +107,12 @@ export default function SignUpForm() {
                         name='username'
                         onChange={handleChange}
                         placeholder='Username'
-                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none"
+                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none m-auto"
                     />
-                    <p className="text-red-500 w-4/5 mt-1">{errorUsername}</p>
+                    <p className="text-red-500 w-4/5 m-auto">{errorUsername}</p>
                 </div>
-                <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                <div className='w-4/6 flex flex-col m-auto'>
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm m-auto'>
                         <MdPassword className='inline-block lg:text-xl md:text-xl text-md' /> Password
                     </label>
                     <input
@@ -120,13 +120,13 @@ export default function SignUpForm() {
                         name='password'
                         onChange={handleChange}
                         placeholder='************'
-                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none"
+                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none m-auto"
                     />
-                    <p className="text-red-500 break-words text-sm w-4/5 mt-1">{errorPassword}</p>
-                    <p className="text-slate-500 text-xs w-4/5 mt-1">Password security : {message}</p>
+                    <p className="text-red-500 break-words text-sm w-4/5 m-auto">{errorPassword}</p>
+                    <p className="text-slate-500 text-xs w-4/5 m-auto">Password security : {message}</p>
                 </div>
-                <div className='w-4/6 flex flex-col items-center'>
-                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm'>
+                <div className='w-4/6 flex flex-col m-auto'>
+                    <label className='block font-bold w-4/5 break-words lg:text-xl md:text-xl text-sm m-auto'>
                         <MdPassword className='inline-block lg:text-xl md:text-xl text-md' /> Comfirm password
                     </label>
                     <input
@@ -134,14 +134,14 @@ export default function SignUpForm() {
                         name='comfirmPassword'
                         onChange={handleChange}
                         placeholder='************'
-                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none"
+                        className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none m-auto"
                     />
                     <p className="text-red-500 w-4/5 mt-1">{errorConfirmPassword}</p>
                 </div>
-                <div className='w-4/6 flex flex-col items-center'>
+                <div className='w-4/6 flex flex-col m-auto'>
                     <button
                         onClick={signUp}
-                        className="bg-slate-900 lg:w-1/5 md:w-28 w-3/5 break-words p-1 rounded-sm border-solid border border-slate-700 shadow-md hover:bg-slate-800 duration-300 active:bg-slate-900 active:ring-2 active:ring-green-700 focus:outline-none"
+                        className="bg-slate-900 lg:w-2/5 md:w-28 w-3/5 break-words p-1 rounded-sm border-solid border border-slate-700 shadow-md hover:bg-slate-800 duration-300 active:bg-slate-900 active:ring-2 active:ring-green-700 focus:outline-none m-auto"
                     >
                         <HiCheckCircle className='inline-block lg:text-xl md:text-xl text-md' /> Sign up
                     </button>
