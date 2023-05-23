@@ -1,5 +1,4 @@
-import { HiOutlineMail, HiUserCircle, HiCheckCircle } from 'react-icons/hi';
-import { ToastContainer, toast } from 'react-toastify';
+import { HiOutlineMail, HiUserCircle } from 'react-icons/hi';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdPassword } from 'react-icons/md';
 import { useState } from 'react';
@@ -45,7 +44,7 @@ export default function SignUpForm() {
     const signUp = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         if (!isError && !isSomeValueEmpty()) {
-            const data = axios.post('/api/signup', {
+            const data = axios.post('/api/auth/register', {
                 email: values.email,
                 username: values.username,
                 password: hashPwd(),
