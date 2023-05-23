@@ -1,7 +1,10 @@
 import { HiOutlineMail, HiUserCircle, HiCheckCircle } from 'react-icons/hi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { MdPassword } from 'react-icons/md';
 import { useState } from 'react';
 import { SignUpFormData } from '@/types/types';
+import Toastify from '@/components/functionals/toastify';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
@@ -19,6 +22,14 @@ export default function SignUpForm() {
     const [message, setMessage] = useState('');
     const [isError, setIsError] = useState(true);
 
+    //Hash the password state
+    const hashPwd = () => {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(values.password, salt);
+        console.log(hash)
+        return hash;
+    }
+
     // Handle inputs real time change
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log("handled change")
@@ -34,30 +45,29 @@ export default function SignUpForm() {
     const signUp = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         if (!isError && !isSomeValueEmpty()) {
-            axios.get('/api/signup', {
-                params: {
-                    email: values.email,
-                    username: values.username,
-                    password: values.password,
-                    comfirmPassword: values.comfirmPassword,
-                }
+            const data = axios.post('/api/signup', {
+                email: values.email,
+                username: values.username,
+                password: hashPwd(),
             })
+            Toastify({ message: data, type: 'promise' });
+
         }
         else {
-            alert('Please check your inputs');
+            Toastify({ message: 'Please fill all the fields or assure that passwords are the same', type: 'error' });
         }
     };
 
+    // Check if some value is empty or passwords are different at the submit
     const isSomeValueEmpty = () => {
-
-        if (values.email === '' || values.username === '' || values.password === '' || values.comfirmPassword === '') {
+        if (values.email === '' || values.username === '' || values.password === '' || values.comfirmPassword === '' || values.password !== values.comfirmPassword) {
             setIsError(true);
             return true;
         } else {
             return false;
         }
     };
-    // Check if the value of the input is valid
+    // Check if the value of the input is valid in real time
     const checkValueAndForm = (event: React.ChangeEvent<HTMLInputElement>) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const usernameRegex = /^[a-zA-Z0-9_-]{3,}$/;
@@ -174,7 +184,7 @@ export default function SignUpForm() {
                         placeholder='************'
                         className="bg-slate-900 md:w-4/5 w-5/6 p-1 ring-1 ring-slate-800 rounded shadow-md hover:bg-slate-800 duration-300 focus:outline-none m-auto"
                     />
-                    <p className="text-red-500 w-4/5 mt-1">{errorcomfirmPassword}</p>
+                    <p className="text-red-500 w-4/5 m-auto">{errorcomfirmPassword}</p>
                 </div>
                 <div className='w-4/6 flex flex-col m-auto'>
                     <input
