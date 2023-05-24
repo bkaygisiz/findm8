@@ -3,6 +3,7 @@ import { connectToDatabase } from "../../../../lib/mongodb"
 import * as AuthController from "@/controller/auth.controller";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    console.log("API")
     const db = await connectToDatabase();
     AuthController.registerUser(req, res, db);
 }
