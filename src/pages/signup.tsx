@@ -7,7 +7,7 @@ export default function SignUp() {
     return (
         <>
             <Navigation />
-            <main className='bg-gradient-to-r from-indigo-900 to-slate-900 h-screen flex justify-center items-center text-slate-300'>
+            <main className='bg-primary h-screen flex justify-center items-center text-quaternary'>
                 <SignUpForm/>
             </main>
         </>

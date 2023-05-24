@@ -19,6 +19,12 @@ module.exports = {
           '80%': { opacity: 0.8 , transform: 'translateY(-30px)'},
           '100%': { opacity: 1, transform: 'translateY(0px)' },
         },
+      },
+      colors: {
+        'primary': '#222831',
+        'secondary': '#393e46',
+        'tertiary': '#f96d00',
+        'quaternary': '#f2f2f2',
       }
     },
   },
