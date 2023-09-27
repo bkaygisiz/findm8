@@ -2,7 +2,7 @@ import { HiOutlineMail, HiUserCircle } from 'react-icons/hi';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdPassword } from 'react-icons/md';
 import { useState } from 'react';
-import { SignUpFormData } from '@/types/types';
+import { SignUpFormData, User } from '@/types/types';
 import Input from '@/components/input';
 import Toastify from '@/components/functionals/toastify';
 import axios from 'axios';
@@ -32,7 +32,6 @@ export default function SignUpForm() {
 
     // Handle inputs real time change
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("handled change")
         checkInputValue(event);
         setValues({
             ...values,
@@ -45,12 +44,13 @@ export default function SignUpForm() {
     const register = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         if (!isError && !isWrongValues()) {
-            const data = axios.post('/api/auth/register', {
+            const user: User = {
                 email: values.email,
                 username: values.username,
                 password: hashPwd(),
-            })
-            Toastify({ message: data, type: 'promise' });
+            }
+            const data = axios.post('/api/auth/register', user)
+            Toastify({ message: data, type: 'promise', pending: "Pending...", success: "You are registered", error: "Error, user already exists" });
 
         }
         else {
@@ -131,7 +131,7 @@ export default function SignUpForm() {
 
     return (
         <>
-            <form onSubmit={register} className="flex flex-col overflow-scroll py-10 lg:w-2/5 md:w-4/5 md:h-3/5 lg:h-4/5 h-3/5 w-4/5 animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-tr from-primary to-secondary lg:space-y-8 md:space-y-10 space-y-6">
+            <form onSubmit={register} className="flex flex-col overflow-y-auto py-10 lg:w-2/5 md:w-4/5 md:h-3/5 lg:h-4/5 h-3/5 w-4/5 animate-fadin shadow-slate-900 shadow-2xl rounded-2xl ring-2 ring-slate-800 bg-gradient-to-tr from-primary to-secondary lg:space-y-8 md:space-y-10 space-y-6">
                 <h1 className="flex flex-col text-slate-100 md:text-5xl text-xl font-bold break-words mx-auto lg:my-14 md:my-10 my-5">Sign up</h1>
                 <Input label="Email" name="email" type="text" onChange={handleChange} placeholder="Email" icon={<HiOutlineMail className='lg:text-xl md:text-xl text-md inline-block' />} error={errorEmail} />
                 <Input label="Username" name="username" type="text" onChange={handleChange} placeholder="Username" icon={<HiUserCircle className='lg:text-xl md:text-xl text-md inline-block' />} error={errorUsername} />

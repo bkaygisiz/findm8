@@ -1,3 +1,5 @@
+import { ObjectId, WithId, Document } from "mongodb";
+
 export interface SignUpFormData {
     email: string;
     username: string;
@@ -8,5 +10,10 @@ export interface SignUpFormData {
 export interface User {
     email: string;
     username: string;
+    password: string;
+};
+
+export interface LogingUser {
+    email: string;
     password: string;
 };

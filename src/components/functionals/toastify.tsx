@@ -1,7 +1,6 @@
-import { AxiosResponse } from 'axios';
-import { ToastContainer, ToastContent, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
-export default function Toastify({ message, type }: { message: string | any, type: string }) {
+export default function Toastify({ message, type, pending, success, error }: { message: string | any, type: string, pending?: string, success?: string, error?: string }) {
     let notification: any;
     switch (type) {
         case 'success':
@@ -34,9 +33,9 @@ export default function Toastify({ message, type }: { message: string | any, typ
             break;
         case 'promise':
             notification = toast.promise(message, {
-                pending: 'Pending...',
-                success: 'User created ! You will be redirected',
-                error: 'Email or user already exists, or fields are wrong',
+                pending,
+                success,
+                error
             }, {
                 theme: 'dark',
                 position: 'top-right',

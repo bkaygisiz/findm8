@@ -4,5 +4,5 @@ import * as AuthController from "@/controller/auth.controller";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const db = await connectToDatabase();
-    await AuthController.registerUser(req, res, db);
+    await AuthController.loginUser(req, res, db);
 }
